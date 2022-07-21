@@ -7,24 +7,22 @@
 #define DOORS_COUNT 15
 #define MAX_ID_SEED 10000
 
-void initialize_doors(struct door* doors);
-void sort(door *array);
-void qs(door *array, int left, int right);
+void initialize_doors(struct door *doors);
+void sort(struct door *array);
+void qs(struct door *array, int left, int right);
 
 int main() {
-    door doors[DOORS_COUNT];
+    struct door doors[DOORS_COUNT];
 
     initialize_doors(doors);
 
-    #ifdef doors_sort
-        for (int i = 0; i < DOORS_COUNT; i++)
-            doors[i].status = 0;
+    for (int i = 0; i < DOORS_COUNT; i++)
+        doors[i].status = 0;
 
-        sort(doors);
+    sort(doors);
 
-        for (int i = 0; i < DOORS_COUNT; i++)
-            printf("%d, %d\n", doors[i].id, doors[i].status);
-    #endif
+    for (int i = 0; i < DOORS_COUNT; i++)
+        printf("%d, %d\n", doors[i].id, doors[i].status);
 
     return 0;
 }
@@ -43,11 +41,11 @@ void initialize_doors(struct door* doors) {
     }
 }
 
-void sort(door *array) {
+void sort(struct door *array) {
     qs(array, 0, DOORS_COUNT - 1);
 }
 
-void qs(door *array, int left, int right) {
+void qs(struct door *array, int left, int right) {
     int i, j;
     int x;
 
